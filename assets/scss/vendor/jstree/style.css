@@ -1096,6 +1096,7 @@
 .jstree-default-large.jstree-rtl .jstree-last {
     background: transparent;
 }
+
 @media (max-width: 768px) {
     #jstree-dnd.jstree-dnd-responsive {
         font-size: 1.1em;
@@ -1129,6 +1130,7 @@
         margin-top: -10px;
     }
 }
+
 @media (max-width: 768px) {
     .jstree-default-responsive .jstree-icon {
         background-image: url("/assets/img/vendor/jstree/40px.png");
