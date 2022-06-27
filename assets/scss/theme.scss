@@ -1,4 +1,42 @@
+// Utils needed for the settings
 
-body{
-	background: #444444;
+@import "components/index";
+@import "global/typography";
+@import "m3_theme";
+
+.d-none{
+	display: none;
+}
+
+html{
+	line-height: 1.5;
+	font-size: 1rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+h1,h2,h3,h4,h5,h6,button,a{
+	font-family: serif;
+	display: block;
+}
+
+
+body.material-theme{
+	color:var(--md-sys-color-on-background);
+}
+
+nav ul {
+	display: inline-flex;
+	li {
+		list-style: none;
+	}
+}
+
+.no-left-padding{
+	padding-left:0;
 }

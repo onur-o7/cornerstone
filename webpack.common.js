@@ -1,8 +1,8 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
-    CleanPlugin = require('clean-webpack-plugin'),
-    LodashPlugin = require('lodash-webpack-plugin'),
-    path = require('path'),
-    webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const LodashPlugin = require('lodash-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
 // Common configuration, with extensions in webpack.dev.js and webpack.prod.js.
 module.exports = {
@@ -40,7 +40,9 @@ module.exports = {
                 test: require.resolve('jquery'),
                 use: [{
                     loader: 'expose-loader',
-                    options: '$',
+                    options: {
+                        exposes: ['$', 'jQuery'],
+                    },
                 }],
             },
         ],
@@ -56,7 +58,7 @@ module.exports = {
         maxEntrypointSize: 1024 * 300,
     },
     plugins: [
-        new CleanPlugin(['assets/dist'], {
+        new CleanWebpackPlugin({
             verbose: false,
             watch: false,
         }),

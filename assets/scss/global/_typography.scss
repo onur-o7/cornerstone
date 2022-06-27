@@ -1,0 +1,44 @@
+
+body{
+	--body: #2d1600;
+	color:var(--body)
+}
+
+a, a:visited, a:focus {
+	color:var(--body);
+}
+
+
+i.icon {
+	font-variation-settings:
+					'FILL' 0,
+					'wght' 300,
+					'GRAD' 0,
+					'opsz' 48;
+	font-family: 'Material Symbols Rounded',serif;
+	font-style: normal;
+	font-size: 24px;
+	width: 24px;
+	line-height: 1;
+	display: inline-block;
+	aspect-ratio: 1/1;
+	text-transform: none!important;
+}
+
+.button{
+	display: flex;
+}
+.icon-button{
+	transition: box-shadow 0.3s linear;
+	border: 0;
+	background: transparent;
+	padding:6px;
+	&:hover{
+		/* M3/Elevation Light/1 */
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+	}
+}
+
+.link.link--no-underline{
+	text-decoration: none;
+}

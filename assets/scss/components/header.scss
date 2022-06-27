@@ -1,0 +1,37 @@
+
+body{
+	background: hsl(35, 100%, 98%);
+}
+
+header{
+	display: grid;
+	grid-template-columns: 16px min-content auto min-content 16px;
+	align-items: center;
+	&:after,&:before{
+		content: " ";
+	}
+	.nav-pages{
+		display:none;
+	}
+	.quick-search{
+		grid-column: 2/5;
+	}
+
+	.nav-user{
+		&__item{
+			height: fit-content;
+		}
+		&__container{
+			margin: 0;
+		}
+	}
+}
+
+body{
+	overflow-scrolling: auto;
+}
+
+main{
+	overflow: auto;
+	overscroll-behavior: contain;
+}

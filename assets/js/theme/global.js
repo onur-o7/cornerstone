@@ -1,10 +1,7 @@
-
+import PageManager from './page-manager';
 
 export default class Global extends PageManager {
     onReady() {
-        const {
-            channelId, cartId, productId, categoryId, secureBaseUrl, maintenanceModeSettings, adminBarLanguage,
-        } = this.context;
-        consele.log(categoryId);
+        console.log('super-light is ready');
     }
 }

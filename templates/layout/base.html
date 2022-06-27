@@ -26,9 +26,11 @@
         </script>
         <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
 
-        <link rel="preload" href="{{cdn 'assets/dist/theme-bundle.font.js'}}" as="script">
-        <script async src="{{cdn 'assets/dist/theme-bundle.font.js'}}"></script>
+        />
 
         {{{stylesheet '/assets/css/theme.css'}}}
 
@@ -54,12 +56,15 @@
         {{!-- Get this loading ASAP --}}
         <link rel="preload" href="{{cdn 'assets/dist/theme-bundle.main.js'}}" as="script">
     </head>
-    <body>
-        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
-
+    <body class="material-theme">
         {{> components/common/header }}
+
+        <main style="height: 100vh" ></main>
+
+        {{!--
         {{> components/common/body }}
         {{> components/common/footer }}
+        --}}
 
         <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
         <script>
