@@ -25,9 +25,9 @@
             window.lazySizesConfig.loadMode = 1;
         </script>
         <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
-        
+
         {{getFontsCollection font-display='block'}}
-        
+
         <link rel="preload" href="{{cdn 'assets/dist/theme-bundle.font.js'}}" as="script">
         <script async src="{{cdn 'assets/dist/theme-bundle.font.js'}}"></script>
 
@@ -56,7 +56,9 @@
         <link rel="preload" href="{{cdn 'assets/dist/theme-bundle.main.js'}}" as="script">
     </head>
     <body>
-        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite" style="display: none"></svg>
+
+        <div id="app"></div>
 
         {{> components/common/header }}
         {{> components/common/body }}

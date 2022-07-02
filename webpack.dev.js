@@ -1,6 +1,6 @@
-const webpack = require('webpack'),
-      merge = require('webpack-merge'),
-      commonConfig = require('./webpack.common.js');
+// eslint-disable-next-line import/extensions
+const commonConfig = require('./webpack.common.js');
+const { merge } = require('webpack-merge');
 
 module.exports = merge(commonConfig, {
     devtool: 'inline-source-map',

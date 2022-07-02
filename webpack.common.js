@@ -1,8 +1,10 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
-    CleanPlugin = require('clean-webpack-plugin'),
-    LodashPlugin = require('lodash-webpack-plugin'),
-    path = require('path'),
-    webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const LodashPlugin = require('lodash-webpack-plugin');
+const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const webpack = require('webpack');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // Common configuration, with extensions in webpack.dev.js and webpack.prod.js.
 module.exports = {
@@ -17,14 +19,16 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 include: /(assets\/js|assets\\js|stencil-utils)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         plugins: [
                             '@babel/plugin-syntax-dynamic-import', // add support for dynamic imports (used in app.js)
-                            'lodash', // Tree-shake lodash
+                            'lodash',
+                            '@babel/plugin-transform-object-assign',
+                            // Tree-shake lodash
                         ],
                         presets: [
                             ['@babel/preset-env', {
@@ -32,7 +36,7 @@ module.exports = {
                                 modules: false, // Don't transform modules; needed for tree-shaking
                                 useBuiltIns: 'entry',
                                 corejs: '^3.6.5',
-                            }],
+                            }]
                         ],
                     },
                 },
@@ -57,15 +61,11 @@ module.exports = {
         maxEntrypointSize: 1024 * 300,
     },
     plugins: [
-        new CleanPlugin(['assets/dist'], {
-            verbose: false,
-            watch: false,
-        }),
+        new CleanWebpackPlugin(),
         new LodashPlugin(), // Complements babel-plugin-lodash by shrinking its cherry-picked builds further.
-        new webpack.ProvidePlugin({ // Provide jquery automatically without explicit import
+        new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-            'window.jQuery': 'jquery',
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
@@ -77,10 +77,7 @@ module.exports = {
             jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
             jstree: path.resolve(__dirname, 'node_modules/jstree/dist/jstree.min.js'),
             lazysizes: path.resolve(__dirname, 'node_modules/lazysizes/lazysizes.min.js'),
-            nanobar: path.resolve(__dirname, 'node_modules/nanobar/nanobar.min.js'),
-            'slick-carousel': path.resolve(__dirname, 'node_modules/slick-carousel/slick/slick.min.js'),
             'svg-injector': path.resolve(__dirname, 'node_modules/svg-injector/dist/svg-injector.min.js'),
-            sweetalert2: path.resolve(__dirname, 'node_modules/sweetalert2/dist/sweetalert2.min.js'),
         },
     },
 };
