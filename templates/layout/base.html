@@ -5,7 +5,8 @@
         {{{ resourceHints }}}
         {{{ head.meta_tags }}}
         {{{ head.config }}}
-        {{#block "head"}} {{/block}}
+        {{#block "head"}}
+        {{/block}}
 
         <link href="{{ head.favicon }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,11 +25,7 @@
             window.lazySizesConfig = window.lazySizesConfig || {};
             window.lazySizesConfig.loadMode = 1;
         </script>
-        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
-        
-        {{getFontsCollection font-display='block'}}
-        
-        <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
+
 
         {{{stylesheet '/assets/css/theme.css'}}}
 
@@ -49,7 +46,8 @@
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
     </head>
     <body>
-        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite">
+        </svg>
 
         {{> components/common/header }}
         {{> components/common/body }}
@@ -74,12 +72,12 @@
                     document.body.appendChild(formDataPolyfillScript);
                 }
 
-                if (!browserSupportsFormData()) {
-                    loadFormDataPolyfillScript('{{cdn 'assets/dist/theme-bundle.polyfill_form_data.js'}}');
-                }
             }
         </script>
-        <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
+        <script async
+                defer
+                src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}"
+                onload="onThemeBundleMain()"></script>
 
         {{{footer.scripts}}}
     </body>

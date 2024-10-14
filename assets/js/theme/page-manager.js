@@ -1,20 +1,22 @@
 export default class PageManager {
     constructor(context) {
-        this.context = context;
+        this.context = context
     }
 
     type() {
-        return this.constructor.name;
+        return this.constructor.name
     }
 
-    onReady() {
-    }
+    onReady() {}
 
     static load(context) {
-        const page = new this(context);
-
-        $(document).ready(() => {
-            page.onReady.bind(page)();
-        });
+        const page = new this(context)
+        // alternative to DOMContentLoaded
+        document.onreadystatechange = function () {
+            if (document.readyState == 'interactive') {
+                // Initialize your application or run some code.
+                page.onReady.bind(page)()
+            }
+        }
     }
 }
