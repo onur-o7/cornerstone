@@ -11,12 +11,13 @@
         <link href="{{ head.favicon }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        {{>components/base_css}}
+
         <script>
             {{!-- Change document class from no-js to js so we can detect this in css --}}
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
         </script>
 
-        {{> components/common/polyfill-script }}
         <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
 
         {{!-- Load Lazysizes script ASAP so images will appear --}}
@@ -46,8 +47,6 @@
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
     </head>
     <body>
-        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite">
-        </svg>
 
         {{> components/common/header }}
         {{> components/common/body }}
@@ -57,21 +56,7 @@
         <script>
             {{!-- Exported in app.js --}}
             function onThemeBundleMain() {
-                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
-
-                function browserSupportsFormData() {
-                    return typeof FormData !== 'undefined' 
-                        && !!FormData.prototype.keys;
-                }
-                function loadFormDataPolyfillScript(src) {
-                    var formDataPolyfillScript = document.createElement('script');
-                    formDataPolyfillScript.src = src;
-                    formDataPolyfillScript.onerror = function () {
-                        console.error('Failed to load formData polyfill script ' + src);
-                    };
-                    document.body.appendChild(formDataPolyfillScript);
-                }
-
+                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load(); 
             }
         </script>
         <script async
